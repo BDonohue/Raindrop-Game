@@ -4,6 +4,7 @@ Levels level = new Levels();
 
 void setup() {
   size(500, 500);
+  Rain.add(new Raindrop());
 }
 
 void draw() {
@@ -16,19 +17,23 @@ void draw() {
   rainbow(650, 0, 0, 255);
   rainbow(625, 200, 0, 255);
   rainbow(600, 80, 220, 230);
-
-  if (frameCount%45 == 0) {
+  
+  if (frameCount%100 == 0) {
     Rain.add(new Raindrop());
   }
-
+  
   for (int i = Rain.size()-1; i >= 0; i--) {
     Raindrop rain = Rain.get(i);
+
     rain.update();
-    input += rain.test();
-    level.update(rain.test());
+    input = rain.test();
+    level.update(input);
   }
 
-  text(level.score, 50, 50);
+  textSize(50);
+  textAlign(CENTER);
+  fill(0);
+  text(level.score, width/2, 200);
   
 }
 
