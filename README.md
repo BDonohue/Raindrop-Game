@@ -1,7 +1,7 @@
 Raindrop_game01
 ===============
 Tech Project
-
+~~~~~~~~~~~~~~~
 Section of the Project:
 A System that runs the game.
 A Class that controls the catcher.
