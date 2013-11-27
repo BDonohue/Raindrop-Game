@@ -9,9 +9,8 @@ void setup() {
 
 void draw() {
 
-  
-
   if (level.level(level.score) == 1) {
+    Rain = new ArrayList<Raindrop>();
     cursor(ARROW);
     background(80, 220, 230); 
     rainbow(750, 255, 0, 0);
@@ -22,21 +21,40 @@ void draw() {
     rainbow(625, 200, 0, 255);
     rainbow(600, 80, 220, 230);
     println(level.strt());
-   fill(0);
-   level.scorebox();
-   if(level.strt()){
-    input = input + 1; 
-    level.update(input);
-   }
+    fill(0);
+    level.scorebox();
+    if (level.strt()) {
+      input = input + 1; 
+      level.update(input);
+    }
   }
 
   else {
     noCursor();
     background(0);
-    
-    if (frameCount%1 == 0) {
+    if (level.score()%25 == 1 && level.score() >= 526){
+      input = input - 1;
+      level.update(input);
+    }
+    if (frameCount%150 == 0 && level.level(level.score) == 0) {
       Rain.add(new Raindrop());
     }
+    else if (frameCount%120 == 0 && level.level(level.score) == 2) {
+      Rain.add(new Raindrop());
+    }
+    else if (frameCount%90 == 0 && level.level(level.score) == 3) {
+      Rain.add(new Raindrop());
+    } 
+    else if (frameCount%80 == 0 && level.level(level.score) == 4) {
+      Rain.add(new Raindrop());
+    } 
+    else if (frameCount%70 == 0 && level.level(level.score) == 5) {
+      Rain.add(new Raindrop());
+    } 
+    else if (frameCount%60 == 0 && level.level(level.score) == 6) {
+      Rain.add(new Raindrop());
+    } 
+
 
     for (int i = Rain.size()-1; i >= 0; i--) {
       Raindrop rain = Rain.get(i);
