@@ -9,7 +9,7 @@ void setup() {
 
 void draw() {
 
-  if (level.level(level.score) == 1) {
+  if (level.level(level.score) == 0) {
     Rain = new ArrayList<Raindrop>();
     cursor(ARROW);
     background(80, 220, 230); 
@@ -20,11 +20,10 @@ void draw() {
     rainbow(650, 0, 0, 255);
     rainbow(625, 200, 0, 255);
     rainbow(600, 80, 220, 230);
-    println(level.strt());
     fill(0);
     level.scorebox();
     if (level.strt()) {
-      input = input + 1; 
+      input = input + 25; 
       level.update(input);
     }
   }
@@ -32,11 +31,8 @@ void draw() {
   else {
     noCursor();
     background(0);
-    if (level.score()%25 == 1 && level.score() >= 526){
-      input = input - 1;
-      level.update(input);
-    }
-    if (frameCount%150 == 0 && level.level(level.score) == 0) {
+
+    if (frameCount%150 == 0 && level.level(level.score) == 1) {
       Rain.add(new Raindrop());
     }
     else if (frameCount%120 == 0 && level.level(level.score) == 2) {

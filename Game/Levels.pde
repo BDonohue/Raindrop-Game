@@ -10,7 +10,11 @@ class Levels {
   }
 
   int level(int x) {
-    if (x > 10000) {
+
+    if (x==0||x==500||x==1000||x==2000||x==5000||x==10000) {
+      return 0;
+    }
+    else if (x > 10000) {
       return 6;
     }
     else if (x > 5000) {
@@ -22,14 +26,11 @@ class Levels {
     else if (x > 1000) {
       return 3;
     }
-    else if(x > 500){
-      return 2; 
+    else if (x > 500) {
+      return 2;
     }
-    else if (x==500||x==1000||x==2000||x==5000||x==10000) {
-      return 1;
-    } 
     else {
-      return 0;
+      return 1;
     }
   }
 
@@ -43,6 +44,8 @@ class Levels {
     textSize(25);
     textAlign(CENTER);
     text("START", width/2, height/2);
+    text("LEVEL",width/2, height/2 + 110);
+    text(level.level(level.score+1),width/2,height/2 + 150);
     if (mouseX<width/2+25&&mouseX>width/2-25&&mouseY<height/2+75&&mouseY>height/2+25&&mousePressed) {
       return true;
     } 
