@@ -1,14 +1,13 @@
 ArrayList<Raindrop> Rain = new ArrayList<Raindrop>();
 int input, score;
 Levels level = new Levels();
+Catcher catcher = new Catcher();
 
 void setup() {
   size(500, 500);
-  Rain.add(new Raindrop());
 }
 
 void draw() {
-
   if (level.level(level.score) == 0) {
     Rain = new ArrayList<Raindrop>();
     cursor(ARROW);
@@ -29,10 +28,12 @@ void draw() {
   }
 
   else {
+    println(level.level(level.score));
+    
     noCursor();
     background(0);
 
-    if (frameCount%150 == 0 && level.level(level.score) == 1) {
+    if (second()%5 == 0 && level.level(level.score) == 1) {
       Rain.add(new Raindrop());
     }
     else if (frameCount%120 == 0 && level.level(level.score) == 2) {
@@ -50,14 +51,15 @@ void draw() {
     else if (frameCount%60 == 0 && level.level(level.score) == 6) {
       Rain.add(new Raindrop());
     } 
-
-
+      
     for (int i = Rain.size()-1; i >= 0; i--) {
       Raindrop rain = Rain.get(i);
       rain.update();
       input = rain.test();
       level.update(input);
     }
+    
+    catcher.display(mouseX);
     fill(255);
     level.scorebox();
   }
