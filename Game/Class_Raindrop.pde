@@ -18,7 +18,6 @@ class Raindrop {
   }
 
   int test() {
-    //will
     if (Loc.y + 25 > height - 45 && Loc.x < mouseX+25 && Loc.x > mouseX-25) {
       //tests if raindrop's location is in sync with the catcher
       run = false;  //deactivates rain drop
@@ -28,6 +27,16 @@ class Raindrop {
     else {
       return 0;  //
     }
+  }
+  
+  float Locy(){
+    //returns Loc.y for lightning purposes 
+    return Loc.y;
+  }
+  
+  float Locx(){
+   //returns Loc.y for lightning purposes 
+   return Loc.x;
   }
 }
 

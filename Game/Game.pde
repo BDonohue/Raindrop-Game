@@ -4,6 +4,7 @@ ArrayList<Raindrop> Rain = new ArrayList<Raindrop>();
 int input, score;
 Levels level = new Levels();
 Catcher catcher = new Catcher();
+boolean lightningrun = false;
 
 void setup() {
   size(500, 500);
@@ -40,27 +41,21 @@ void draw() {
     //as the levels proceed, the rain comes faster 
     if (frameCount%150 == 0 && level.level(level.score) == 1) {
       Rain.add(new Raindrop());
-      lightning();
     }
     else if (frameCount%140 == 0 && level.level(level.score) == 2) {
       Rain.add(new Raindrop());
-      lightning();
     }
     else if (frameCount%130 == 0 && level.level(level.score) == 3) {
       Rain.add(new Raindrop());
-      lightning();
     } 
     else if (frameCount%120 == 0 && level.level(level.score) == 4) {
       Rain.add(new Raindrop());
-      lightning();
     } 
     else if (frameCount%110 == 0 && level.level(level.score) == 5) {
       Rain.add(new Raindrop());
-      lightning();
     } 
     else if (frameCount%100 == 0 && level.level(level.score) == 6) {
       Rain.add(new Raindrop());
-      lightning();
     } 
     //making it rain
     for (int i = Rain.size()-1; i >= 0; i--) {
@@ -68,6 +63,15 @@ void draw() {
       rain.update();
       input = rain.test();
       level.scoreupdate(input);
+      if (rain.Locy()==10) {
+        lightningrun = true;
+      } 
+      if (rain.Locy()==25) {
+       lightningrun = false; 
+      }
+      if (lightningrun) {
+        lightning(rain.Locx());
+      }
     }
     //adding in the catcher
     catcher.display(mouseX);
@@ -84,10 +88,10 @@ void rainbow(int x, int a, int b, int c) {
   ellipse(width/2, height-50, x, x);
 }
 
-void lightning() {
+void lightning(float x) {
   fill(210, 100, 0);
   noStroke();
-  quad(255, 0, 255, 270, 225, 310, 210, 0);
-  triangle(255, 190, 285, 150, 255, 500);
+  quad(x+15, 0, x+15, 270, x-15, 310, x-30, 0);
+  triangle(x+15, 190, x+45, 150, x+15, 500);
 }
 
