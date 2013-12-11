@@ -1,3 +1,5 @@
+//Project by Brandon Donohue
+
 ArrayList<Raindrop> Rain = new ArrayList<Raindrop>();
 int input, score;
 Levels level = new Levels();
@@ -38,21 +40,27 @@ void draw() {
     //as the levels proceed, the rain comes faster 
     if (frameCount%150 == 0 && level.level(level.score) == 1) {
       Rain.add(new Raindrop());
+      lightning();
     }
     else if (frameCount%140 == 0 && level.level(level.score) == 2) {
       Rain.add(new Raindrop());
+      lightning();
     }
     else if (frameCount%130 == 0 && level.level(level.score) == 3) {
       Rain.add(new Raindrop());
+      lightning();
     } 
     else if (frameCount%120 == 0 && level.level(level.score) == 4) {
       Rain.add(new Raindrop());
+      lightning();
     } 
     else if (frameCount%110 == 0 && level.level(level.score) == 5) {
       Rain.add(new Raindrop());
+      lightning();
     } 
     else if (frameCount%100 == 0 && level.level(level.score) == 6) {
       Rain.add(new Raindrop());
+      lightning();
     } 
     //making it rain
     for (int i = Rain.size()-1; i >= 0; i--) {
@@ -74,5 +82,12 @@ void rainbow(int x, int a, int b, int c) {
   fill(a, b, c);
   noStroke();
   ellipse(width/2, height-50, x, x);
+}
+
+void lightning() {
+  fill(210, 100, 0);
+  noStroke();
+  quad(255, 0, 255, 270, 225, 310, 210, 0);
+  triangle(255, 190, 285, 150, 255, 500);
 }
 

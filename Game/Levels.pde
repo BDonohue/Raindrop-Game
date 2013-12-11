@@ -14,6 +14,7 @@ class Levels {
   
   int lives(){
    //easy access to the current amount of lives
+   //still a WIP 
    return lives; 
   }
 
@@ -49,6 +50,7 @@ class Levels {
   }
   
   void lifeupdate(){
+    //once again, a WIP
   }
 
   boolean strt() {
@@ -60,6 +62,7 @@ class Levels {
     text(level.level(level.score+1), width/2, height/2 + 150);
     
     //start button
+    //it's a boolean so when it's true, the next level appears
     rectMode(CENTER);
     rect(width/2, height/2+50, 50, 50);
     if (mouseX<width/2+25&&mouseX>width/2-25&&mouseY<height/2+75&&mouseY>height/2+25&&mousePressed) {
