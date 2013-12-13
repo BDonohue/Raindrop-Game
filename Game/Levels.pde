@@ -4,7 +4,7 @@ class Levels {
   Levels() {
     //set score equal to zero
     score = 0;
-    lives = 100;
+    lives = 5;
   }  
 
   int score() {
@@ -49,8 +49,8 @@ class Levels {
     score = score + x;
   }
   
-  void lifeupdate(){
-    //once again, a WIP
+  void lifeupdate(int x){
+    lives-=x;
   }
 
   boolean strt() {
@@ -60,7 +60,6 @@ class Levels {
     text("START", width/2, height/2);
     text("LEVEL", width/2, height/2 + 110);
     text(level.level(level.score+1), width/2, height/2 + 150);
-    
     //start button
     //it's a boolean so when it's true, the next level appears
     rectMode(CENTER);
@@ -75,9 +74,10 @@ class Levels {
 
   void scorebox() {
     //displays the score
-    textSize(50);
+    textSize(20);
     textAlign(CENTER);
-    text(level.score, width/2, 200);
+    text("Score:" + level.score, 75, 475);
+    text("Lives:" + lives, 450, 475);
   }
 }
 

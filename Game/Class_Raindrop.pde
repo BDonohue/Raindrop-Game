@@ -14,6 +14,8 @@ class Raindrop {
       fill(0, 0, 200);
       ellipse(Loc.x, Loc.y, 25, 25);
       Loc.add(Vel);
+    } else {
+        Loc.y = 0; 
     }
   }
 
@@ -21,7 +23,6 @@ class Raindrop {
     if (Loc.y + 25 > height - 45 && Loc.x < mouseX+25 && Loc.x > mouseX-25) {
       //tests if raindrop's location is in sync with the catcher
       run = false;  //deactivates rain drop
-      Loc = new PVector(random(width), 0);
       return 25;  // returns score
     } 
     else {
@@ -37,6 +38,19 @@ class Raindrop {
   float Locx(){
    //returns Loc.y for lightning purposes 
    return Loc.x;
+  }
+  
+  void reset(){
+   //for the fallen rain drops, we salute you
+   run = false;
+  }
+  
+  boolean lightningrun(float x){
+    if(x>10&&x<50){
+    return true;
+    } else {
+    return false;  
+    } 
   }
 }
 

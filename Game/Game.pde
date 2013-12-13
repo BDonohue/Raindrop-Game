@@ -33,7 +33,14 @@ void draw() {
       level.scoreupdate(input);
     }
   }
-
+  else if (level.lives()==0) {
+    //end screen
+    cursor(CROSS);
+    background(0);
+    textSize(50);
+    fill(255, 0, 0);
+    text("Game Over \n Your Score: " + level.score, width/2, 200);
+  }
   else {   
     //even more beautiful plain background
     noCursor();
@@ -63,20 +70,18 @@ void draw() {
       rain.update();
       input = rain.test();
       level.scoreupdate(input);
-      if (rain.Locy()==10) {
-        lightningrun = true;
-      } 
-      if (rain.Locy()==25) {
-       lightningrun = false; 
+      if (rain.Locy()>=width) {
+        level.lifeupdate(1);
+        rain.reset();
       }
-      if (lightningrun) {
+      if (rain.lightningrun(rain.Locy())) {
         lightning(rain.Locx());
       }
     }
     //adding in the catcher
     catcher.display(mouseX);
     //scorebox
-    fill(255);
+    fill(255,0,0);
     level.scorebox();
   }
 }
@@ -88,10 +93,12 @@ void rainbow(int x, int a, int b, int c) {
   ellipse(width/2, height-50, x, x);
 }
 
+//thunderbolt of lightning, very very frightening 
 void lightning(float x) {
   fill(210, 100, 0);
   noStroke();
   quad(x+15, 0, x+15, 270, x-15, 310, x-30, 0);
   triangle(x+15, 190, x+45, 150, x+15, 500);
 }
+
 
