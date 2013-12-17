@@ -25,3 +25,12 @@ After a certain amount of points
 are obtained, a rainbow on the
 new screen will appear with a 
 button for the next level.
+~~~~~~~~~~~~~~~
+Glitches and Bugs:
+The raindrops can enter the basket sideways.
+  (It's easier to play though!)
+Level 6 is never ending.
+  It's possible to add in more levels, but no one has that much attention to play that far.
+To get from the intermission (rainbow) screen to the next level, a point is added.
+  Look at boolean strt under the Levels tab to see it exactly.
+  It was added to make the game simplier, not to give players sympathy points.
